@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
-import { getAuthorsQuery } from "../queries/queries";
+import { graphql, compose } from "react-apollo";
+import {
+  getAuthorsQuery,
+  addBookMutation,
+  getBooksQuery
+} from "../queries/queries";
 
 class AddBook extends Component {
   constructor(props) {
@@ -12,9 +16,9 @@ class AddBook extends Component {
     };
   }
   displayAuthors() {
-    var data = this.props.data;
+    var data = this.props.getAuthorsQuery;
     if (data.loading) {
-      return <option>Loading authors...</option>;
+      return <option disabled>Loading authors</option>;
     } else {
       return data.authors.map(author => {
         return (
@@ -27,7 +31,15 @@ class AddBook extends Component {
   }
   submitForm(e) {
     e.preventDefault();
-    console.log(this.state);
+    // use the addBookMutation
+    this.props.addBookMutation({
+      variables: {
+        name: this.state.name,
+        genre: this.state.genre,
+        authorId: this.state.authorId
+      },
+      refetchQueries: [{ query: getBooksQuery }]
+    });
   }
   render() {
     return (
@@ -39,7 +51,6 @@ class AddBook extends Component {
             onChange={e => this.setState({ name: e.target.value })}
           />
         </div>
-
         <div className="field">
           <label>Genre:</label>
           <input
@@ -47,7 +58,6 @@ class AddBook extends Component {
             onChange={e => this.setState({ genre: e.target.value })}
           />
         </div>
-
         <div className="field">
           <label>Author:</label>
           <select onChange={e => this.setState({ authorId: e.target.value })}>
@@ -61,4 +71,7 @@ class AddBook extends Component {
   }
 }
 
-export default graphql(getAuthorsQuery)(AddBook);
+export default compose(
+  graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+  graphql(addBookMutation, { name: "addBookMutation" })
+)(AddBook);
