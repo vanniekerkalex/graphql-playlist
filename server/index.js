@@ -9,7 +9,7 @@ const app = express();
 //allow cross-origin requests
 app.use(cors());
 
-mongoose.connect("mongodb://shaun:test123@ds119024.mlab.com:19024/gql-ninja");
+mongoose.connect("mongodb://shaun:test123@ds119024.mlab.com:19024/gql-ninja", { useNewUrlParser: true });
 mongoose.connection.once("open", () => {
   console.log("Connected to DB");
 });
