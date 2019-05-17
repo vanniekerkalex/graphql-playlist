@@ -1,49 +1,75 @@
 import { gql } from "apollo-boost";
 
-const getAuthorsQuery = gql`
+const getAddressesQuery = gql`
   {
-    authors {
-      name
+    addresses {
+      street
+      suburb
+      code
       id
     }
   }
 `;
 
-const getBooksQuery = gql`
+const getCustomersQuery = gql`
   {
-    books {
-      name
+    customers {
+      fname
+      sname
       id
     }
   }
 `;
 
-const addBookMutation = gql`
-  mutation AddBook($name: String!, $genre: String!, $authorId: ID!) {
-    addBook(name: $name, genre: $genre, authorId: $authorId) {
-      name
+const addCustomerMutation = gql`
+  mutation AddCustomer($fname: String!, $sname: String!, $addressId: ID!) {
+    addCustomer(fname: $fname, sname: $sname, addressId: $addressId) {
+      fname
+      sname
       id
     }
   }
 `;
 
-const getBookQuery = gql`
-  query GetBook($id: ID) {
-    book(id: $id) {
+const addAddressMutation = gql`
+  mutation AddAddress($street: String!, $suburb: String!, $code: Number!) {
+    addAddress(street: $street, suburb: $suburb, code: $code) {
+      street
+      suburb
+      code
       id
-      name
-      genre
-      author {
+    }
+  }
+`;
+
+const getCustomerQuery = gql`
+  query GetCustomer($id: ID) {
+    customer(id: $id) {
+      fname
+      sname
+      address {
         id
-        name
-        age
-        books {
-          name
-          id
-        }
+        street
+        suburb
+        code
       }
     }
   }
 `;
 
-export { getAuthorsQuery, getBooksQuery, addBookMutation, getBookQuery };
+const getAddressQuery = gql`
+  query GetAddress($id: ID) {
+    address(id: $id) {
+      street
+      suburb
+      code
+      customers {
+        id
+        fname
+        sname
+      }
+    }
+  }
+`;
+
+export { getAddressesQuery, getCustomersQuery, addCustomerMutation, getCustomerQuery, addAddressMutation, getAddressQuery };

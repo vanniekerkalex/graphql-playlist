@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { Container, Row } from 'react-bootstrap';
+import './App.css';
 
 //components
-import BookList from "./components/BookList";
-import AddBook from "./components/AddBook";
+import CustomerList from "./components/CustomerList";
+import AddCustomer from "./components/AddCustomer";
+import AddAddress from "./components/AddAddress";
 
 //apollo client setup
 const client = new ApolloClient({
@@ -16,9 +19,14 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div id="main">
-          <h1>Ninja's Reading List</h1>
-          <BookList />
-          <AddBook />
+          <h1>Capfin - Customer List</h1>
+          <CustomerList />
+          <Container>
+            <Row>
+              <AddCustomer />
+              <AddAddress />
+            </Row>
+          </Container>
         </div>
       </ApolloProvider>
     );
