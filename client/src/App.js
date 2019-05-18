@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Image } from 'react-bootstrap';
 import './App.css';
 
 //components
@@ -11,7 +11,7 @@ import AddAddress from "./components/AddAddress";
 
 //apollo client setup
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri: "http://localhost:4000/api"
 });
 
 class App extends Component {
@@ -19,7 +19,10 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div id="main">
-          <h1>Capfin - Customer List</h1>
+          <div id="main1">
+            <a href="/"><Image id="mainLogo" src={require("./logo.png")} fluid /></a>
+            <h3 id="main1">Customer List</h3>
+          </div>
           <CustomerList />
           <Container>
             <Row>

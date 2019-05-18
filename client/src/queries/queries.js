@@ -32,7 +32,7 @@ const addCustomerMutation = gql`
 `;
 
 const addAddressMutation = gql`
-  mutation AddAddress($street: String!, $suburb: String!, $code: Number!) {
+  mutation AddAddress($street: String!, $suburb: String!, $code: String!) {
     addAddress(street: $street, suburb: $suburb, code: $code) {
       street
       suburb

@@ -33,7 +33,7 @@ class AddCustomer extends Component {
     e.preventDefault();
     // use the addBookMutation
     if (this.state.fname.length > 0 && this.state.sname.length > 0) {
-      if (this.state.addressId.length > 0) {
+      if (this.state.addressId.length > 0 && this.state.addressId !== "Select address") {
         this.props.addCustomerMutation({
           variables: {
             fname: this.state.fname,
@@ -54,14 +54,14 @@ class AddCustomer extends Component {
       <form id="add-customer" onSubmit={this.submitForm.bind(this)}>
         <h3>Add Customer</h3>
         <div className="field">
-          <label>Firstname:</label>
+          <label>First Name:</label>
           <input
             type="text"
             onChange={e => this.setState({ fname: e.target.value })}
           />
         </div>
         <div className="field">
-          <label>Lastname:</label>
+          <label>Last Name:</label>
           <input
             type="text"
             onChange={e => this.setState({ sname: e.target.value })}

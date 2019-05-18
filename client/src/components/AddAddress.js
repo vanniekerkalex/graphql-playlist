@@ -17,8 +17,7 @@ class AddAddress extends Component {
 
   submitForm(e) {
     e.preventDefault();
-    // use the addBookMutation
-    if (this.state.street.length > 0) {
+    if (this.state.street.length > 0 && this.state.suburb.length > 0 && this.state.code.length > 3) {
       this.props.addAddressMutation({
         variables: {
           street: this.state.street,
@@ -28,9 +27,10 @@ class AddAddress extends Component {
         refetchQueries: [{ query: getAddressesQuery }]
       });
     } else {
-      alert("The street field may not be empty.");
+      alert("Please complete all fields with valid information.");
     }
   }
+
   render() {
     return (
       <form id="add-address" onSubmit={this.submitForm.bind(this)}>
@@ -52,7 +52,7 @@ class AddAddress extends Component {
         <div className="field">
           <label>Code:</label>
           <input
-            type="number"
+            type="text"
             onChange={e => this.setState({ code: e.target.value })}
           />
         </div>

@@ -6,11 +6,27 @@ body {
 #main h1 {
   color: #444;
   text-align: center;
+  /* margin-block-end: */
+  margin-bottom: 0;
 }
 
-.h3 {
+#mainLogo{
+  width:200px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#main h3 {
   margin-right: 0;
   margin-left: auto;
+}
+
+#main1 {
+  color: #444;
+  text-align: center;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #main {
@@ -34,10 +50,10 @@ body {
   margin: 12px;
   padding: 10px;
   border-radius: 4px;
-  border: 1px solid #880e4f;
+  border: 1px solid #0069C8;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  color: #880e4f;
+  color: #0069C8;
 }
 
 #address-list li {
@@ -45,10 +61,10 @@ body {
   margin: 12px;
   padding: 10px;
   border-radius: 4px;
-  border: 1px solid #880e4f;
+  border: 1px solid #0069C8;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  color: #880e4f;
+  color: #0069C8;
 }
 
 form {
@@ -90,7 +106,7 @@ form input {
 form button {
   color: #fff;
   font-size: 2em;
-  background: #ad1457;
+  background: #0069C8;
   border: 0;
   padding: 0 10px;
   border-radius: 50%;
@@ -106,7 +122,7 @@ form button {
   right: 0;
   width: 40%;
   height: 100%;
-  background: #ad1457;
+  background: #0069C8;
   padding: 30px;
   overflow: auto;
   box-shadow: -2px -3px 5px rgba(0, 0, 0, 0.3);

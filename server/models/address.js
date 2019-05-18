@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const addressSchema = new Schema({
   street: String,
   suburb: String,
-  code: Number
+  code: String
 });
 
 module.exports = mongoose.model("Address", addressSchema);

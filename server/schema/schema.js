@@ -35,8 +35,8 @@ const AddressType = new GraphQLObjectType({
     id: { type: GraphQLID },
     street: { type: GraphQLString },
     suburb: { type: GraphQLString },
-    code: { type: GraphQLInt },
-    customer: {
+    code: { type: GraphQLString },
+    customers: {
       type: new GraphQLList(CustomerType),
       resolve(parent, args) {
         //return _.filter(books, { authorId: parent.id });
@@ -91,7 +91,7 @@ const Mutation = new GraphQLObjectType({
       args: {
         street: { type: new GraphQLNonNull(GraphQLString) },
         suburb: { type: new GraphQLNonNull(GraphQLString) },
-        code: { type: new GraphQLNonNull(GraphQLInt) }
+        code: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
         let address = new Address({
